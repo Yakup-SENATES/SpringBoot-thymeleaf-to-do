@@ -34,8 +34,12 @@ public class ToDoService {
     }
 
 
-    public int countAllByCompleted(boolean b) {
-        return toDoRepository.countAllByCompleted(b);
+    public int countAllByCompleted(boolean completed) {
+        return toDoRepository.countAllByCompleted(completed);
+    }
+
+    public List<ToDoItem> findAllByCompleted(boolean completed) {
+        return toDoRepository.findAllByCompleted(completed);
     }
 }
 
