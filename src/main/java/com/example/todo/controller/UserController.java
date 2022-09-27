@@ -15,10 +15,10 @@ public class UserController {
 
     private final UserService userService;
 
-    // home page controller
+    // index page controller
     @GetMapping("/")
-    public String home() {
-        return "home";
+    public String index() {
+        return "index";
     }
 
     // register page controller

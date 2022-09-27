@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -127,5 +126,9 @@ public class ToDoController {
         return "redirect:/todo";
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "index";
+    }
 
 }

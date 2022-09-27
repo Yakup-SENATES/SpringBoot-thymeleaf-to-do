@@ -55,6 +55,7 @@ public class ApplicationConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/todo").hasRole("USER")
                 .and()
                 .formLogin()
                 .defaultSuccessUrl("/")
