@@ -17,8 +17,8 @@ public class ToDoService {
         return toDoRepository.findAll();
     }
 
-    public ToDoItem save(ToDoItem toDoItem) {
-        return toDoRepository.save(toDoItem);
+    public void save(ToDoItem toDoItem) {
+        toDoRepository.save(toDoItem);
     }
 
     public void deleteById(Long id) {
@@ -29,6 +29,14 @@ public class ToDoService {
         return toDoRepository.findById(id).orElseThrow();
     }
 
+    public Object count() {
+        return toDoRepository.count();
+    }
+
+
+    public int countAllByCompleted(boolean b) {
+        return toDoRepository.countAllByCompleted(b);
+    }
 }
 
 
