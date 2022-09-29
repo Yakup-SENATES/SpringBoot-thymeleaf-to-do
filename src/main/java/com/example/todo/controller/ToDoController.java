@@ -6,6 +6,7 @@ import com.example.todo.data.ListFilter;
 import com.example.todo.data.ToDoItemFormData;
 import com.example.todo.model.ToDoItem;
 import com.example.todo.service.ToDoService;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class ToDoController {
 
     //fetch all items in todo list
     @GetMapping
+    @ApiOperation(value = "Get all items in todo list")
     public String index(Model model) {
        addAttributesForIndex(model,ListFilter.ALL);
         return "todo";
@@ -31,12 +33,14 @@ public class ToDoController {
 
     // get active items in todo list
     @GetMapping("/active")
+    @ApiOperation(value = "Get active items in todo list")
     public String indexActive(Model model) {
         addAttributesForIndex(model,ListFilter.ACTIVE);
         return "todo";
     }
 
     // get completed items in todo list
+    @ApiOperation(value = "Get completed items in todo list")
     @GetMapping("/completed")
     public String indexCompleted(Model model) {
         addAttributesForIndex(model,ListFilter.COMPLETED);
@@ -44,6 +48,7 @@ public class ToDoController {
     }
 
     @DeleteMapping("/completed")
+    @ApiOperation(value = "Delete completed items in todo list")
     public String deleteCompleted() {
         List<ToDoItem> completedItems = toDoService.findAllByCompleted(true);
         for (ToDoItem item : completedItems) {
@@ -94,6 +99,7 @@ public class ToDoController {
 
     //add item to todo list
     @PostMapping
+    @ApiOperation(value = "Add item to todo list")
     public String addToDoItem(@ModelAttribute("item") ToDoItemFormData data) {
         toDoService.save(new ToDoItem(data.getTitle(), false));
         return "redirect:/todo";
@@ -101,6 +107,7 @@ public class ToDoController {
 
     // delete item from todo list
     @DeleteMapping("/{id}/delete")
+    @ApiOperation(value = "Delete item from todo list")
     public String deleteToDoItem(@PathVariable("id") Long id) {
         toDoService.deleteById(id);
         return "redirect:/todo";
@@ -108,6 +115,7 @@ public class ToDoController {
 
     // update item in todo list
     @PutMapping("/{id}/toggle")
+    @ApiOperation(value = "Update item in todo list")
     public String toggleSelection(@PathVariable("id") Long id) {
 
         ToDoItem toDoItem = toDoService.findById(id);
@@ -116,7 +124,9 @@ public class ToDoController {
         return "redirect:/todo";
     }
 
+    // Select All
     @PutMapping("/toggle-all")
+    @ApiOperation(value = "Update all items in todo list")
     public String toggleAllSelection() {
         List<ToDoItem> toDoItems = toDoService.findAll();
         for (ToDoItem item : toDoItems) {

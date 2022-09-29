@@ -1,5 +1,7 @@
 package com.example.todo.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,13 +12,17 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
+@ApiModel(value = "ToDo Item",description = "All details about the ToDoItem. ")
 public class ToDoItem {
+
     @Id
     @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
+    @ApiModelProperty(notes = "The database generated ToDoItem ID")
     private Long id;
 
+    @ApiModelProperty(notes = "The ToDoItem description")
     private String title;
-
+    @ApiModelProperty(notes = "The ToDoItem status")
     private boolean completed;
 
 
