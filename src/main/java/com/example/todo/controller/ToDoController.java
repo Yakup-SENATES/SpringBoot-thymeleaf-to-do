@@ -24,10 +24,10 @@ public class ToDoController {
     private final ToDoService toDoService;
 
     //fetch all items in todo list
-    @GetMapping
     @ApiOperation(value = "Get all items in todo list")
+    @GetMapping
     public String index(Model model) {
-       addAttributesForIndex(model,ListFilter.ALL);
+        addAttributesForIndex(model,ListFilter.ALL);
         return "todo";
     }
 
@@ -134,11 +134,6 @@ public class ToDoController {
             toDoService.save(item);
         }
         return "redirect:/todo";
-    }
-
-    @GetMapping("/test")
-    public String test() {
-        return "index";
     }
 
 }
