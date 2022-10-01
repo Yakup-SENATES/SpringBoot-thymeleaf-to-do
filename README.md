@@ -11,8 +11,6 @@ Swagger ile api documentasyonu yapılmıştır.
 
 ![App Screenshot](https://i.im.ge/2022/09/30/1YU4rm.image.png)
 
-
-
 ## Ana Sayfa
 
 ![App Screenshot](https://i.im.ge/2022/09/30/1Yhufa.image.png)
